@@ -1,0 +1,16 @@
+[package]
+name = "nyaadesu"
+version = "0.1.0"
+authors = ["grastello <gabriele.rastello@edu.unito.it>"]
+
+description = """Non-official API to search Nyaa.si for torrents."""
+
+repository = "https://github.com/grastello/nyaadesu"
+readme = "README.md"
+keywords = ["nyaa", "torrent", "anime"]
+license = "MIT"
+edition = "2018"
+
+[dependencies]
+reqwest = "0.9.18"
+html5ever = "0.23.0"
