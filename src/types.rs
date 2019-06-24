@@ -7,7 +7,12 @@ pub struct Torrent {
     pub category: Category,
     /// The name of the torrent.
     pub name: String,
-    /// Links for the torrent (magnet and .torrent) as a pair.
+    /// Links for the torrent (magnet and .torrent) as a pair. If you want to
+    /// get a url to the .torrent file or the magnet please use the
+    /// [`torrent_file`] or the [`magnet_link`] methods.
+    ///
+    /// [`torrent_file`]: #method.torrent_file
+    /// [`magnet_link`]: #method.magnet_link
     pub links: (Option<String>, Option<String>),
     /// Total size of the torrent's files in bytes.
     pub size: u64,
@@ -22,7 +27,29 @@ pub struct Torrent {
 }
 
 impl Torrent {
-    /// Extract magnet link.
+    /// Extract `.torrent`'s file url as `String`.
+    pub fn torrent_file(&self) -> Option<String> {
+        let mut result = String::from("https://nyaa.si");
+        let (first, second) = &self.links;
+
+        if let Some(torrent_file) = first {
+            if torrent_file.starts_with("/download") {
+                result.push_str(torrent_file);
+                return Some(result.clone());
+            }
+        }
+
+        if let Some(torrent_file) = second {
+            if torrent_file.starts_with("/download") {
+                result.push_str(torrent_file);
+                return Some(result.clone());
+            }
+        }
+
+        None
+    }
+    
+    /// Extract magnet link as `String`.
     pub fn magnet_link(&self) -> Option<String> {
         let (first, second) = &self.links;
 

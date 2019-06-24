@@ -23,7 +23,7 @@ List of project's goals:
 - [X] Cringe Japanese-ish name.
 - [X] Better type for torrents' sizes.
 - [ ] Better type for torrents' dates.
-- [ ] Way to extract magnet and .torrent link.
+- [X] Way to extract magnet and .torrent link.
 
 List of features that seems cool to have:
 - [ ] Get more information about a torrent (e.g. by parsing a page like [this](https://nyaa.si/view/644786))
