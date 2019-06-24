@@ -21,6 +21,27 @@ pub struct Torrent {
     pub completed_downloads: u32,
 }
 
+impl Torrent {
+    /// Extract magnet link.
+    pub fn magnet_link(&self) -> Option<String> {
+        let (first, second) = &self.links;
+
+        if let Some(magnet) = first {
+            if magnet.starts_with("magnet") {
+                return Some(magnet.clone());
+            }
+        }
+
+        if let Some(magnet) = second {
+            if magnet.starts_with("magnet") {
+                return Some(magnet.clone());
+            }
+        }
+
+        None
+    }
+}
+
 /// Enum that encodes a torrent's category.
 #[derive(Debug)]
 pub enum Category {
