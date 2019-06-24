@@ -14,11 +14,11 @@ pub struct Torrent {
     /// Date of pubblication of the torrent as unix timestamp.
     pub date: String,
     /// Number of seeders.
-    pub seeders: i32,
+    pub seeders: u32,
     /// Number of leechers.
-    pub leechers: i32,
+    pub leechers: u32,
     /// Number of completed downloads.
-    pub completed_downloads: i32,
+    pub completed_downloads: u32,
 }
 
 /// Enum that encodes a torrent's category.

@@ -315,9 +315,9 @@ fn get_date(row: &html5ever::rcdom::Node) -> Option<String> {
 }
 
 // Extract torrent's seeders.
-fn get_seeders(row: &html5ever::rcdom::Node) -> Option<i32> {
+fn get_seeders(row: &html5ever::rcdom::Node) -> Option<u32> {
     let seeders_raw = get_text(row, 11)?;
-    let seeders = seeders_raw.parse::<i32>();
+    let seeders = seeders_raw.parse::<u32>();
 
     match seeders {
         Ok(s) => Some(s),
@@ -326,9 +326,9 @@ fn get_seeders(row: &html5ever::rcdom::Node) -> Option<i32> {
 }
 
 // Extract torrent's leechers.
-fn get_leechers(row: &html5ever::rcdom::Node) -> Option<i32> {
+fn get_leechers(row: &html5ever::rcdom::Node) -> Option<u32> {
     let leechers_raw = get_text(row, 13)?;
-    let leechers = leechers_raw.parse::<i32>();
+    let leechers = leechers_raw.parse::<u32>();
 
     match leechers {
         Ok(l) => Some(l),
@@ -337,9 +337,9 @@ fn get_leechers(row: &html5ever::rcdom::Node) -> Option<i32> {
 }
 
 // Extract torrent's completed downloads.
-fn get_completed_downloads(row: &html5ever::rcdom::Node) -> Option<i32> {
+fn get_completed_downloads(row: &html5ever::rcdom::Node) -> Option<u32> {
     let completed_downloads_raw = get_text(row, 15)?;
-    let completed_downloads = completed_downloads_raw.parse::<i32>();
+    let completed_downloads = completed_downloads_raw.parse::<u32>();
 
     match completed_downloads {
         Ok(c) => Some(c),
