@@ -283,7 +283,7 @@ fn get_links(row: &html5ever::rcdom::Node) -> Option<(Option<String>, Option<Str
 }
 
 // Extract torrent's size.
-fn get_size(row: &html5ever::rcdom::Node) -> Option<f64> {
+fn get_size(row: &html5ever::rcdom::Node) -> Option<u64> {
     // Extract size as a String and split it.
     let size_raw = get_text(row, 7)?;
     let size_raw_split = size_raw.split(' ').collect::<Vec<_>>();
@@ -305,7 +305,8 @@ fn get_size(row: &html5ever::rcdom::Node) -> Option<f64> {
     if unit == 0 {
         None
     } else {
-        Some(coefficient * unit as f64)
+        let x = coefficient * unit as f64;
+        Some(x.round() as u64)
     }
 }
 

@@ -10,7 +10,7 @@ pub struct Torrent {
     /// Links for the torrent (magnet and .torrent) as a pair.
     pub links: (Option<String>, Option<String>),
     /// Total size of the torrent's files in bytes.
-    pub size: f64,
+    pub size: u64,
     /// Date of pubblication of the torrent as unix timestamp.
     pub date: String,
     /// Number of seeders.
