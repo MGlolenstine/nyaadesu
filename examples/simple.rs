@@ -4,7 +4,7 @@ extern crate nyaadesu;
 
 fn main() {
     println!("Fetching torrents...");
-    let torrents = nyaadesu::torrent_search("Madoka Magica");
+    let torrents = nyaadesu::torrent_search("little witch academia enchanted parade");
 
     match torrents {
         Ok(ts) => print_torrents(ts),
@@ -16,7 +16,7 @@ fn print_torrents(ts: Vec<nyaadesu::Torrent>) {
     if ts.is_empty() {
         println!("There are no torrents!")
     } else {
-        ts.iter().for_each(|t| println!("{}", t.name))
+        ts.iter().for_each(|t| println!("{:?}", t.name))
     }
 }
 
