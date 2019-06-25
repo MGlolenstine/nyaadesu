@@ -19,7 +19,7 @@ You can then look at the example in the `examples` directory or run it directly 
 ## Todo
 List of project's goals:
 
-- [X] Search [Nyaa.si](https://nyaa.si) for torrents
+- [X] Search [Nyaa.si](https://nyaa.si) for torrents.
 - [X] Cringe Japanese-ish name.
 - [X] Better type for torrents' sizes.
 - [ ] Better type for torrents' dates.
