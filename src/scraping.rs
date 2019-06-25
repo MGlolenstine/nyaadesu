@@ -124,6 +124,7 @@ fn parse_page(handle: &html5ever::rcdom::Handle) -> Option<Vec<Torrent>> {
 
 // Dive deep in the webpage and extract the table body (i.e. <tbody>) of the main table.
 fn get_table_body(handle: &html5ever::rcdom::Handle) -> Option<Rc<html5ever::rcdom::Node>> {
+    // Get to the <div class="container"> that holds the table.
     let document_children = &handle.children.borrow();
     let html = document_children.get(1)?;
     let html_children = &html.children.borrow();
@@ -131,13 +132,41 @@ fn get_table_body(handle: &html5ever::rcdom::Handle) -> Option<Rc<html5ever::rcd
     let body_children = &body.children.borrow();
     let container = body_children.get(5)?;
     let container_children = &container.children.borrow();
-    let table_div = container_children.get(3)?;
+
+    // Get the <div class="table-responsive"> that holds the table.
+    let table_div = get_table_div(container_children.to_vec());
+
+    // Get the <tbody>.
     let table_div_children = &table_div.children.borrow();
     let table = table_div_children.get(1)?;
     let table_children = &table.children.borrow();
     let table_body = table_children.get(3)?;
 
     Some(table_body.clone())
+}
+
+// Get the <div class="table-responsive"> that holds the table from the
+// container's childs.
+fn get_table_div(v: Vec<Rc<html5ever::rcdom::Node>>) -> Rc<html5ever::rcdom::Node> {
+    let mut result = html5ever::rcdom::Node::new(html5ever::rcdom::NodeData::Document);
+    for node in v.iter() {
+        if let html5ever::rcdom::NodeData::Element { attrs, .. } = &node.data {
+            if !attrs
+                .borrow()
+                .iter()
+                .filter(|att| {
+                    &att.name.local == "class" && &att.value.to_string() == "table-responsive"
+                })
+                .collect::<Vec<_>>()
+                .is_empty()
+            {
+                result = node.clone();
+                break;
+            }
+        }
+    }
+
+    result
 }
 
 // Identifies an Element node.
