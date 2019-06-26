@@ -152,11 +152,9 @@ fn get_table_div(v: Vec<Rc<html5ever::rcdom::Node>>) -> Option<Rc<html5ever::rcd
     // let mut result = html5ever::rcdom::Node::new(html5ever::rcdom::NodeData::Document);
     for node in v.iter() {
         if let html5ever::rcdom::NodeData::Element { attrs, .. } = &node.data {
-            if attrs
-                .borrow()
-                .iter()
-                .any(|att| &att.name.local == "class" && &att.value.to_string() == "table-responsive")
-            {
+            if attrs.borrow().iter().any(|att| {
+                &att.name.local == "class" && &att.value.to_string() == "table-responsive"
+            }) {
                 result = Some(node.clone());
                 break;
             }
@@ -308,6 +306,29 @@ fn get_links(row: &html5ever::rcdom::Node) -> Option<(Option<String>, Option<Str
     Some((torrent_file, magnet_link))
 }
 
+// Extract torrent's date.
+fn get_date(row: &html5ever::rcdom::Node) -> Option<u64> {
+    // Get to the node that contains the date.
+    let row_children = &row.children.borrow();
+    let date_cell = row_children.get(9)?;
+
+    // Extact date as String.
+    let mut date_raw: Option<String> = None;
+    if let html5ever::rcdom::NodeData::Element { attrs, .. } = &date_cell.data {
+        attrs
+            .borrow()
+            .iter()
+            .filter(|att| &att.name.local == "data-timestamp")
+            .for_each(|att| date_raw = Some(att.value.to_string()))
+    }
+
+    // Convert and return.
+    match date_raw {
+        Some(d) => Some(d.parse::<u64>().unwrap()),
+        None => None,
+    }
+}
+
 // Extract torrent's size.
 fn get_size(row: &html5ever::rcdom::Node) -> Option<u64> {
     // Extract size as a String and split it.
@@ -334,11 +355,6 @@ fn get_size(row: &html5ever::rcdom::Node) -> Option<u64> {
         let x = coefficient * unit as f64;
         Some(x.round() as u64)
     }
-}
-
-// Extract torrent's date.
-fn get_date(row: &html5ever::rcdom::Node) -> Option<String> {
-    get_text(row, 9)
 }
 
 // Extract torrent's seeders.

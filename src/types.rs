@@ -17,7 +17,7 @@ pub struct Torrent {
     /// Total size of the torrent's files in bytes.
     pub size: u64,
     /// Date of pubblication of the torrent as unix timestamp.
-    pub date: String,
+    pub date: u64,
     /// Number of seeders.
     pub seeders: u32,
     /// Number of leechers.

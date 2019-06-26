@@ -22,7 +22,7 @@ List of project's goals:
 - [X] Search [Nyaa.si](https://nyaa.si) for torrents.
 - [X] Cringe Japanese-ish name.
 - [X] Better type for torrents' sizes.
-- [ ] Better type for torrents' dates.
+- [X] Better type for torrents' dates.
 - [X] Way to extract magnet and .torrent link.
 
 List of features that seems cool to have:
