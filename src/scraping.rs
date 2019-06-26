@@ -4,10 +4,6 @@ extern crate reqwest;
 use html5ever::tendril::TendrilSink;
 use std::rc::Rc;
 
-// use crate::types::{
-//     Anime, Audio, Category, Error, Literature, LiveAction, Pictures, Software, Torrent,
-// };
-
 use crate::types::*;
 
 // Enum that encodes diffent types of pages: page with torrents, page with no
