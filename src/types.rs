@@ -1,6 +1,4 @@
-/// Struct that represents a torrent and contains some of its basic information
-/// like category, name, size, date, number of seeders, number of leechers and
-/// number of completed downloads.
+/// Struct that represents a torrent and contains some of its basic information.
 #[derive(Debug)]
 pub struct Torrent {
     /// The category of the torrent.
@@ -137,7 +135,9 @@ pub enum Error {
     /// pages if somehting in how Nyaa.si's pages are generated is changed
     /// searching for torrents may fail. This should hopefully never happen but
     /// I highly suggest you to always check for scaping errors and, if you ever
-    /// record one, to report it as an issue on GitHub so that the library can
+    /// record one, to report it as an issue on [GitHub] so that the library can
     /// be updated.
+    ///
+    /// [GitHub]: https://github.com/grastello/nyaadesu
     Scraping,
 }

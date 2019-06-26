@@ -16,6 +16,11 @@ enum Page {
 }
 
 /// Search Nyaa.si for torrents by name.
+///
+/// While using this function be sure to check for the Error (read [module
+/// level documentation] for more).
+///
+/// [module level documentation]: ./index.html
 pub fn torrent_search(s: &str) -> Result<Vec<Torrent>, Error> {
     let client = reqwest::Client::new();
 
