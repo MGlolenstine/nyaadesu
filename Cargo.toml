@@ -5,11 +5,16 @@ authors = ["grastello <gabriele.rastello@edu.unito.it>"]
 
 description = """Non-official API to search Nyaa.si for torrents."""
 
+homepage = "https://github.com/grastello/nyaadesu"
 repository = "https://github.com/grastello/nyaadesu"
 readme = "README.md"
-keywords = ["nyaa", "torrent", "anime"]
+keywords = ["nyaa", "torrent", "anime", "manga"]
+categories = ["api-bindings"]
 license = "MIT"
 edition = "2018"
+
+[badges]
+travis-ci = { repository = "grastello/nyaadesu" }
 
 [dependencies]
 reqwest = "0.9.18"
