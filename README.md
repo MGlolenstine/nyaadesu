@@ -1,4 +1,4 @@
-# Nyaadesu
+# Nyaadesu [![Build Status](https://travis-ci.org/gRastello/nyaadesu.svg?branch=master)](https://travis-ci.org/gRastello/nyaadesu)
 Non-official rust library to search [Nyaa.si](https://nyaa.si) for torrents.
 
 ## Rationale
