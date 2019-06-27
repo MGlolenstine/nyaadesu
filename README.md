@@ -1,4 +1,4 @@
-# Nyaadesu [![Build Status](https://travis-ci.org/gRastello/nyaadesu.svg?branch=master)](https://travis-ci.org/gRastello/nyaadesu) [![Crates.io version](https://crates.io/crates/nyaadesu)](https://img.shields.io/crates/v/nyaadesu.svg)
+# Nyaadesu [![Build Status](https://travis-ci.org/gRastello/nyaadesu.svg?branch=master)](https://travis-ci.org/gRastello/nyaadesu) [![Crates.io version](https://img.shields.io/crates/v/nyaadesu.svg)](https://crates.io/crates/nyaadesu)
 Non-official rust library to search [Nyaa.si](https://nyaa.si) for torrents.
 
 ## Rationale
