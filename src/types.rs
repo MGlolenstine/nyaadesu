@@ -68,7 +68,7 @@ impl Torrent {
 }
 
 /// Enum that encodes a torrent's category.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Category {
     Anime(Anime),
     Audio(Audio),
@@ -79,7 +79,7 @@ pub enum Category {
 }
 
 /// Enum that encodes variants of anime torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Anime {
     AnimeMusicVideo,
     EnglishTranslated,
@@ -88,14 +88,14 @@ pub enum Anime {
 }
 
 /// Enum that encodes variants of audio torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Audio {
     Lossless,
     Lossy,
 }
 
 /// Enum that encodes variants of literature torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Literature {
     EnglishTranslated,
     NonEnglishTranslated,
@@ -103,7 +103,7 @@ pub enum Literature {
 }
 
 /// Enum that encodes variants of live action torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum LiveAction {
     EnglishTranslated,
     IdolPromotionalVideo,
@@ -112,14 +112,14 @@ pub enum LiveAction {
 }
 
 /// Enum that encodes variants of pictures torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Pictures {
     Graphics,
     Photos,
 }
 
 /// Enum that encodes variants of software torrents.
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum Software {
     Applications,
     Games,
